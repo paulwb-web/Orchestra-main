@@ -1,0 +1,1346 @@
+/* ============================================================
+   Orchestra Design System — Figma tokens
+   Primary button: #111827 pill. Display font: EB Garamond.
+   ============================================================ */
+
+:root {
+  /* --- Colors (exact Figma values) --- */
+  --color-black:       #000000;
+  --color-white:       #ffffff;
+  --color-grey-900:    #111827;   /* buttons, nav, icons */
+  --color-grey-300:    #d1d5db;   /* borders */
+  --color-grey-100:    #f3f4f6;
+  --color-surface:     #f5f5f5;   /* modal & card bg */
+  --color-error:       #ef4444;
+
+  /* Semantic aliases */
+  --color-bg:          #ffffff;
+  --color-text:        #000000;
+  --color-text-muted:  #757575;
+  --color-border:      #d1d5db;
+  --color-footer-bg:   #000000;
+  --color-footer-text: #ffffff;
+  --color-btn-primary: #111827;
+
+  /* --- Fonts (overridden by next/font on <body>) --- */
+  --font-display: 'EB Garamond', Georgia, serif;
+  --font-body:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  /* --- Spacing (matches Figma px values) --- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* --- Radii --- */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   40px;    /* pricing cards */
+  --radius-pill: 100px;   /* CTA buttons */
+
+  /* --- Type scale (Figma values) --- */
+  --text-detail:  12px;
+  --text-body:    14px;
+  --text-ui:      16px;
+  --text-lead:    18px;
+  --text-h4:      20px;
+  --text-h3:      24px;
+  --text-section: 48px;   /* section headings (Recoleta) */
+  --text-hero:    90px;   /* "Orchestra" hero title */
+
+  /* --- Layout --- */
+  --side-pad: 24px;
+}
+
+/* ============================================================
+   Reset
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: none; }
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+
+/* Primary — black pill, white text, 48px tall */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 24px;
+  background: var(--color-btn-primary);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 24px;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-primary:hover { opacity: 0.85; text-decoration: none; }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Ghost — no bg, soft radius, dark text */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: transparent;
+  color: var(--color-grey-900);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-ghost:hover { background: rgba(17,24,39,0.06); text-decoration: none; }
+
+/* Ghost on dark background (footer) */
+.btn-ghost--light { color: var(--color-white); }
+.btn-ghost--light:hover { background: rgba(255,255,255,0.1); }
+
+/* Secondary — white fill, grey-300 border, pill, shadow, dark text */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background: #fff;
+  color: var(--color-grey-900);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 24px;
+  border: 1px solid #D1D5DB;
+  border-radius: 100px;
+  box-shadow: 0 2px 12px 0 rgba(17, 24, 39, 0.04);
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-secondary:hover { background: #F3F4F6; text-decoration: none; }
+
+/* ============================================================
+   Site-wide max-width wrapper (1280px)
+   ============================================================ */
+.site-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ============================================================
+   Header / Top Bar
+   Figma: 1440×128, 3-column grid: logo | nav (centered on page) | actions
+   Nav is centred in relation to the page (Figma node 58-604)
+   Logo 48×48, nav gap=40, height=128px
+   ============================================================ */
+.header {
+  width: 100%;
+  background: var(--color-bg);
+}
+.header__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 128px;
+}
+.header__logo {
+  display: block;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+/* Nav: centred in relation to the page (absolute center of header) */
+.header__nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+/* Actions: right side */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 1;
+}
+/* Signed-in: counter + buy tokens */
+.header__counter-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.header__counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-body);
+  color: var(--color-text);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.header__counter-value { font-weight: 600; }
+.header__counter-label { font-weight: 500; }
+.header__divider {
+  display: inline-block;
+  width: 1px;
+  height: 24px;
+  background: var(--color-border);
+}
+
+/* ============================================================
+   Hero
+   Figma: 800×450 centered frame, VERTICAL layout, gap=40, pad T40 B40
+   All text center-aligned
+   ============================================================ */
+.hero { padding: 40px 24px; }
+.hero__inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+.hero__title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 400;
+  line-height: 122.4px;
+  letter-spacing: -0.9px;
+  color: var(--color-black);
+}
+.hero__subtitle-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.hero__subtitle {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.144px;
+  color: var(--color-black);
+}
+.hero__description {
+  font-size: var(--text-h3);
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: -0.144px;
+  color: var(--color-black);
+}
+
+/* ============================================================
+   Feature Blocks
+   Figma: 3 columns, gap=40, padding T40 R24 B40 L24
+   Each card: VERTICAL gap=32; image 240×240
+   ============================================================ */
+.features { padding: 40px var(--side-pad); }
+.features__grid {
+  display: flex;
+  gap: 40px;
+}
+.features__card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.features__image-wrap {
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.features__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.features__card-title {
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-black);
+}
+.features__card-desc {
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--color-black);
+}
+
+/* ============================================================
+   Art Style Viewer
+   Figma: 85:1161 — 1440×877, centered content 720px
+   ============================================================ */
+.art-styles {
+  padding: 80px 24px;
+}
+.art-styles__header {
+  max-width: 640px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+.art-styles__title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 500;
+  color: var(--color-black);
+}
+.art-styles__desc {
+  font-size: var(--text-h3);
+  font-weight: 400;
+  letter-spacing: -0.006em;
+  line-height: 1.4;
+  color: var(--color-black);
+}
+.art-styles__content {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+.art-styles__toggles {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.art-styles__btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 24px;
+  background: #fff;
+  border: 1px solid #D1D5DB;
+  border-radius: 100px;
+  box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.05);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: #111827;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+.art-styles__btn--active {
+  border: 3px solid #111827;
+}
+.art-styles__btn:hover:not(.art-styles__btn--active) {
+  background: #F3F4F6;
+}
+.art-styles__viewer {
+  flex: 2;
+  min-width: 0;
+  background: var(--color-surface);
+  min-height: 510px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.art-styles__image {
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+  animation: art-fade-in 0.3s ease;
+}
+@keyframes art-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ============================================================
+   Pricing
+   Figma: 1440×626, tiled bg image at 15% opacity, VERTICAL counter=CENTER
+   Title centered; cards container primary=CENTER
+   ============================================================ */
+.pricing {
+  padding: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+/* Tiled background image at 15% opacity via pseudo-element */
+.pricing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/pricing-bg.png');
+  background-repeat: repeat;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+.pricing > * { position: relative; z-index: 1; }
+.pricing__header {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+.pricing__title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 400;
+  line-height: 1.36;
+  color: var(--color-black);
+}
+.pricing__grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 24px;
+}
+.pricing__card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px;
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  width: 240px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.pricing__card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px 0 rgba(17, 24, 39, 0.10);
+}
+/* Pack name + price block: 8px gap (Figma 41-4295) */
+.pricing__details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pricing__pack-name {
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-black);
+}
+.pricing__price {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 400;
+  color: var(--color-black);
+  line-height: 1;
+}
+.pricing__features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+.pricing__feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--color-black);
+}
+.pricing__divider { height: 1px; background: var(--color-border); }
+
+/* Slider layout wrapper — centers card within pricing section */
+.pricing__slider-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+/* ============================================================
+   Pricing Slider (v02)
+   Figma: 82:4195 — 520×268, bg #F5F5F5, radius 40px, pad 40px
+   ============================================================ */
+.pricing-slider {
+  background: var(--color-surface);
+  border-radius: 40px;
+  padding: 40px;
+  width: 520px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+/* Figma 82:4197 — info row + qty display share 8px gap */
+.pricing-slider__top {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* Figma 82:4198 — single row: €{total} · [icon] · {qty} Picture{s} */
+.pricing-slider__info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.pricing-slider__price,
+.pricing-slider__pictures {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-black);
+}
+/* Figma 82:4209 — big qty display, centered */
+.pricing-slider__qty {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+}
+.pricing-slider__number,
+.pricing-slider__unit {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--color-black);
+  line-height: 1.3;
+}
+
+/* Custom range input */
+.pricing-slider__track {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  background: #D1D5DB;
+  border-radius: 100px;
+  outline: none;
+  cursor: pointer;
+}
+.pricing-slider__track::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 16px;
+  background: #000;
+  border-radius: 100px;
+  cursor: pointer;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 3px,
+    rgba(255, 255, 255, 0.5) 3px, rgba(255, 255, 255, 0.5) 4px
+  );
+}
+.pricing-slider__track::-moz-range-thumb {
+  width: 28px;
+  height: 16px;
+  background: #000;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ============================================================
+   CTA Block
+   Figma: 1440×625, VERTICAL, counter=CENTER, gap=40, pad T40 B40
+   Title: Recoleta 48px centered. Image 493×284. Text 14px centered.
+   ============================================================ */
+.cta-block {
+  padding: 40px var(--side-pad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.cta-block__title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 400;
+  color: var(--color-black);
+  text-align: center;
+}
+.cta-block__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+.cta-block__image-wrap { padding: 8px; }
+.cta-block__image {
+  display: block;
+  width: 493px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.cta-block__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.cta-block__text {
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-black);
+  text-align: center;
+  max-width: 637px;
+}
+
+/* ============================================================
+   Footer
+   Figma 41-4342: bg=#000, pad 80px, 4-column content (each 220px, gap=24) + wordmark
+   Content: 1280px wide, justify-content: space-between
+   ============================================================ */
+.footer {
+  height: 400px;
+  position: relative;
+  background: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  padding: 80px;
+  overflow: hidden;
+}
+/* Inner content row: 1280px max, 4 sections spread across */
+.footer__content {
+  max-width: 1280px;
+  margin: 0 auto 80px;
+  display: flex;
+  justify-content: space-between;
+}
+/* Each column: vertical stack, gap=24 */
+.footer__section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 220px;
+  flex-shrink: 0;
+}
+/* Title row: 14px, w=600, full white */
+.footer__section-title {
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--color-white);
+}
+/* Address block: multiline, 14px w=500, full white, preserve newlines */
+.footer__section-text {
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--color-white);
+  white-space: pre-line;
+}
+/* Nav links in sections 2+3: 14px w=500, 50% white */
+.footer__link {
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+}
+.footer__link:hover { color: var(--color-white); }
+/* Support email: 14px w=600, 50% white */
+.footer__section-email {
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.5);
+}
+/* Copyright: 12px w=500, 50% white */
+.footer__copyright {
+  font-size: var(--text-detail);
+  font-weight: 500;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.5);
+}
+/* Decorative "Orchestra" wordmark — 240px Recoleta, vertically cut halfway, not selectable (Figma 41-4342, 41-4358) */
+.footer__wordmark-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+}
+.footer__wordmark-svg {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  max-width: 1400px;
+  height: 280px;
+}
+.footer__wordmark-text {
+  font-family: var(--font-display);
+  font-size: 240px;
+  font-weight: 400;
+  fill: rgba(255, 255, 255, 0.2);
+  letter-spacing: -2.4px;
+}
+
+/* ============================================================
+   Modal — shared
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1000;
+  padding: 40px 24px;
+  overflow-y: auto;
+}
+/* Figma 58-1013: 640px wide, bg=#f5f5f5, r=40px, padding=40px, VERTICAL gap=40 */
+.modal {
+  background: var(--color-surface);
+  border-radius: 40px;
+  width: 640px;
+  max-width: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+/* Figma: 48×48 circular close button, left-aligned, 80px gap to tabs */
+.modal__close {
+  align-self: flex-start;
+  margin-bottom: 40px;
+  width: 48px;
+  height: 48px;
+  background: var(--color-grey-900);
+  color: var(--color-white);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal__close:hover { opacity: 0.85; }
+
+/* ============================================================
+   Auth Modal
+   Figma 58-1013 (login) & 58-1159 (create account)
+   ============================================================ */
+/* Tab row — space-between, active tab has 5px underline */
+.auth-modal__tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.auth-modal__tab {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 400;
+  color: var(--color-black);
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 5px solid transparent;
+  padding: 8px 8px 3px;
+  cursor: pointer;
+  line-height: 1.36;
+  opacity: 0.2;
+}
+.auth-modal__tab--active {
+  opacity: 1;
+  border-bottom-color: var(--color-black);
+}
+/* Form: vertical stack, gap=40 between separator+fields+separator+button */
+.auth-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+/* Separator lines above and below the fields group */
+.auth-modal__separator {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+/* Fields group: vertical stack, gap=24 */
+.auth-modal__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.auth-modal__error { color: var(--color-error); font-size: var(--text-body); }
+.auth-modal__label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-black);
+}
+.auth-modal__input {
+  padding: 12px 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: var(--radius-md);
+  font-size: var(--text-body);
+  font-family: var(--font-body);
+  background: var(--color-white);
+  color: var(--color-text);
+  width: 100%;
+  height: 48px;
+}
+.auth-modal__input:focus { outline: 2px solid var(--color-grey-900); outline-offset: 1px; }
+.auth-modal__input::placeholder { color: rgba(0, 0, 0, 0.5); }
+/* Login-only: remember me + forgot password row */
+.auth-modal__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.auth-modal__remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-black);
+  cursor: pointer;
+}
+.auth-modal__forgot {
+  background: none;
+  border: none;
+  color: var(--color-grey-900);
+  font-size: var(--text-body);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  white-space: nowrap;
+}
+.auth-modal__forgot:hover { background: rgba(17,24,39,0.06); }
+/* Signup-only: terms checkbox row */
+.auth-modal__terms {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-black);
+  cursor: pointer;
+}
+.auth-modal__submit { width: 100%; justify-content: center; }
+
+/* Forgot password */
+.forgot-modal__body { padding: 40px; }
+.forgot-modal__title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 400;
+  margin-bottom: 16px;
+  color: var(--color-black);
+}
+.forgot-modal__hint {
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   Buy Tokens Modal
+   ============================================================ */
+.buy-modal__header { display: flex; flex-direction: column; gap: 8px; align-items: center; text-align: center; }
+.buy-modal__title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-black);
+}
+.buy-modal__subtitle { font-size: var(--text-lead); font-weight: 600; color: var(--color-black); }
+.buy-modal__nav { display: flex; justify-content: space-between; align-items: center; }
+.buy-modal__step { font-size: var(--text-body); opacity: 0.4; }
+.buy-modal__packs { display: flex; flex-direction: column; gap: 16px; }
+.buy-modal__pack {
+  background: var(--color-white);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.buy-modal__pack-header { display: flex; flex-direction: column; gap: 8px; }
+.buy-modal__pack-price { font-size: var(--text-lead); font-weight: 600; font-style: normal; color: var(--color-black); }
+.buy-modal__pack-name { font-size: var(--text-body); font-weight: 600; line-height: 24px; color: var(--color-black); }
+.buy-modal__pack-row { display: flex; align-items: center; gap: 8px; font-size: var(--text-body); font-weight: 500; color: var(--color-black); }
+.buy-modal__pack-divider { border: none; border-top: 1px solid var(--color-border); margin: 0; }
+.buy-modal__summary {
+  background: var(--color-white);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.buy-modal__summary-title { font-size: var(--text-lead); font-weight: 600; color: var(--color-black); }
+.buy-modal__payment-placeholder {
+  background: var(--color-white);
+  border-radius: 24px;
+  height: 621px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+/* ============================================================
+   Inspiration Page
+   ============================================================ */
+.inspiration { padding: 40px var(--side-pad); }
+.inspiration__header {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+.inspiration__header-title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 400;
+  line-height: 122.4px;
+  color: var(--color-black);
+  margin-bottom: 40px;
+}
+.inspiration__header-subtitle {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  color: var(--color-black);
+}
+.inspiration__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 400px);
+  gap: 24px;
+}
+.inspiration__item {
+  width: 400px;
+  height: 400px;
+  background: var(--color-grey-300);
+}
+
+/* ============================================================
+   Generate Page
+   ============================================================ */
+.generate { padding: 40px var(--side-pad); }
+.generate__header-title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 400;
+  color: var(--color-black);
+  margin-bottom: 40px;
+}
+.generate__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px;
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+}
+.generate__placeholder-text {
+  font-size: var(--text-lead);
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* ============================================================
+   About Page
+   ============================================================ */
+.about { padding: 40px var(--side-pad); }
+
+.about__header {
+  max-width: 800px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+.about__header-title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 400;
+  line-height: 122.4px;
+  color: var(--color-black);
+  margin-bottom: 40px;
+}
+.about__header-subtitle {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.about__content {
+  max-width: 880px;
+  margin: 0 auto 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.about__section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.about__section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 400;
+  color: var(--color-black);
+}
+.about__section-desc {
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--color-black);
+  line-height: 1.6;
+}
+.about__features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.about__feature { display: flex; flex-direction: column; gap: 8px; }
+.about__feature-title {
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--color-black);
+}
+.about__feature-desc {
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-black);
+  line-height: 1.6;
+}
+
+.about__cta {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0;
+}
+.about__cta-title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 400;
+  color: var(--color-black);
+  text-align: center;
+  max-width: 640px;
+}
+.about__cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.about__cta-image-wrap {
+  padding: 8px;
+}
+.about__cta-image {
+  display: block;
+  height: 360px;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+}
+
+/* EB Garamond — -3% letter-spacing on all display-font uses */
+/* ============================================================
+   404 Not Found
+   ============================================================ */
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 128px);
+  padding: 40px 24px;
+}
+.not-found__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.not-found__title {
+  font-family: var(--font-display);
+  font-size: 420px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -12.6px;
+  color: var(--color-black);
+}
+.not-found__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.not-found__text {
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--color-black);
+}
+
+/* ============================================================
+   Cookie Banner
+   ============================================================ */
+.cookie-banner {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fff;
+  border: 1px solid #D1D5DB;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 8px 32px 0 rgba(17, 24, 39, 0.12);
+  width: 320px;
+  max-width: calc(100vw - 48px);
+}
+.cookie-banner__image {
+  flex-shrink: 0;
+  border-radius: 12px;
+}
+.cookie-banner__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cookie-banner__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: 400;
+  color: var(--color-black);
+}
+.cookie-banner__text {
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+.cookie-banner__link {
+  text-decoration: underline;
+  color: inherit;
+}
+.cookie-banner__actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* ============================================================
+   Terms of Use Page
+   ============================================================ */
+.terms { padding: 40px var(--side-pad) 80px; }
+
+.terms__header {
+  max-width: 720px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+.terms__title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 400;
+  color: var(--color-black);
+  margin-bottom: 12px;
+}
+.terms__meta {
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.terms__body {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.terms__body > p,
+.terms__section > p {
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-black);
+}
+.terms__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 32px;
+}
+.terms__section h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: 400;
+  color: var(--color-black);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+.terms__section h3 {
+  font-size: var(--text-body);
+  font-weight: 700;
+  color: var(--color-black);
+  margin-top: 8px;
+}
+.terms__section ul {
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.terms__section li {
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-black);
+  list-style: disc;
+}
+.terms__section strong {
+  font-weight: 600;
+}
+
+/* ============================================================
+   FAQ Page
+   ============================================================ */
+.faq { padding: 40px var(--side-pad) 80px; }
+.faq__header {
+  max-width: 720px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+.faq__title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  font-weight: 400;
+  color: var(--color-black);
+}
+.faq__group {
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+.faq__category {
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+  font-weight: 400;
+  color: var(--color-black);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 0;
+}
+.faq__items { display: flex; flex-direction: column; }
+.faq__item { border-bottom: 1px solid var(--color-border); }
+.faq__question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--color-black);
+  line-height: 1.5;
+}
+.faq__question:hover { opacity: 0.7; }
+.faq__answer {
+  padding: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.faq__answer p {
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+.hero__title,
+.pricing__title,
+.pricing__price,
+.cta-block__title,
+.footer__wordmark-text,
+.auth-modal__tab,
+.forgot-modal__title,
+.buy-modal__title,
+.inspiration__header-title,
+.generate__header-title,
+.about__header-title,
+.about__section-title,
+.about__cta-title,
+.terms__title,
+.faq__title,
+.art-styles__title {
+  letter-spacing: -0.03em;
+}

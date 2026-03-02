@@ -1,0 +1,39 @@
+{
+  "name": "Orchestra Design System",
+  "version": "1.0.0",
+  "colors": {
+    "primary": { "red": "#E53935", "redHover": "#C62828" },
+    "neutral": {
+      "white": "#FFFFFF",
+      "grey100": "#F5F5F5",
+      "grey200": "#EEEEEE",
+      "grey300": "#E0E0E0",
+      "black": "#212121",
+      "footer": "#212121"
+    },
+    "semantic": {
+      "background": "#FFFFFF",
+      "text": "#212121",
+      "textMuted": "#616161",
+      "border": "#E0E0E0",
+      "cta": "#E53935",
+      "ctaText": "#FFFFFF",
+      "footerBg": "#212121",
+      "footerText": "#FFFFFF"
+    }
+  },
+  "typography": {
+    "fontFamily": { "heading": "Georgia, serif", "body": "Inter, Helvetica Neue, Arial, sans-serif" },
+    "fontSize": { "sm": "0.875rem", "base": "1rem", "lg": "1.125rem", "xl": "1.25rem", "2xl": "1.5rem", "3xl": "2rem", "4xl": "2.5rem" },
+    "fontWeight": { "normal": 400, "medium": 500, "semibold": 600, "bold": 700 }
+  },
+  "spacing": { "2": "0.5rem", "4": "1rem", "6": "1.5rem", "8": "2rem", "12": "3rem", "16": "4rem" },
+  "borderRadius": { "sm": "0.25rem", "md": "0.5rem", "lg": "0.75rem" },
+  "pricing": {
+    "tiers": [
+      { "id": "test", "name": "Test", "price": 1, "currency": "EUR", "tokens": 1 },
+      { "id": "standard", "name": "Standard", "price": 25, "currency": "EUR", "tokens": 30 },
+      { "id": "premium", "name": "Premium", "price": 50, "currency": "EUR", "tokens": 70 }
+    ]
+  }
+}
