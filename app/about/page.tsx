@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 function ArrowRight() {
   return (
@@ -74,7 +75,7 @@ export default function AboutPage() {
           </h2>
           <div className="about__cta-content">
             <div className="about__cta-image-wrap">
-              <img
+              <Image
                 src="/images/art_styles/Symbolism02.jpg"
                 alt="Symbolism artwork example"
                 width={442}
