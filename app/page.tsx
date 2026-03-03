@@ -33,7 +33,7 @@ export default function HomePage() {
           <div className="cta-block__content">
             <div className="cta-block__image-wrap">
               <Image
-                src="/images/art_styles/Fauvism02.jpg"
+                src="/images/art_styles/Fauvism03.jpg"
                 width={640}
                 height={371}
                 alt="Fauvism artwork example"

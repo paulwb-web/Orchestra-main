@@ -21,6 +21,12 @@ function XIcon() {
 export default function AuthModal({ onClose, onOpenForgotPassword }: AuthModalProps) {
   const router = useRouter();
   const [mode, setMode] = useState<"login" | "signup">("login");
+  const [closing, setClosing] = useState(false);
+
+  function handleClose() {
+    setClosing(true);
+    setTimeout(onClose, 300);
+  }
 
   // Login fields
   const [email, setEmail] = useState("");
@@ -101,7 +107,7 @@ export default function AuthModal({ onClose, onOpenForgotPassword }: AuthModalPr
 
       router.push("/");
       router.refresh();
-      onClose();
+      handleClose();
     } catch {
       setError("Something went wrong");
     }
@@ -109,10 +115,10 @@ export default function AuthModal({ onClose, onOpenForgotPassword }: AuthModalPr
   }
 
   return (
-    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
+    <div className={`modal-overlay${closing ? " modal-overlay--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true">
       <div className="modal auth-modal" onClick={(e) => e.stopPropagation()}>
         {/* Close button — circular, SVG X icon */}
-        <button type="button" className="modal__close" onClick={onClose} aria-label="Close">
+        <button type="button" className="modal__close" onClick={handleClose} aria-label="Close">
           <XIcon />
         </button>
 

@@ -125,8 +125,8 @@ export default function Header() {
                   <span className="header__counter-label">
                     Picture{balance !== 1 ? "s" : ""} left to generate
                   </span>
-                  <span className="header__divider" />
                 </button>
+                <span className="header__divider" />
                 <button type="button" className="btn-ghost" onClick={() => signOut({ callbackUrl: "/" })}>
                   <AccountIcon />
                   Sign out

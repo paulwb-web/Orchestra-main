@@ -31,6 +31,12 @@ export default function BuyTokensModal({ onClose, initialQty = 1, initialTotal =
   const [step, setStep] = useState<1 | 2>(initialQty > 1 || initialTotal > 1 ? 2 : 1);
   const [qty, setQty] = useState(initialQty);
   const [total, setTotal] = useState(initialTotal);
+  const [closing, setClosing] = useState(false);
+
+  function handleClose() {
+    setClosing(true);
+    setTimeout(onClose, 300);
+  }
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -44,9 +50,9 @@ export default function BuyTokensModal({ onClose, initialQty = 1, initialTotal =
   }
 
   return (
-    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
+    <div className={`modal-overlay${closing ? " modal-overlay--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true">
       <div className="modal buy-modal" onClick={(e) => e.stopPropagation()}>
-        <button type="button" className="modal__close" onClick={onClose} aria-label="Close">
+        <button type="button" className="modal__close" onClick={handleClose} aria-label="Close">
           <XIcon />
         </button>
 
@@ -58,7 +64,7 @@ export default function BuyTokensModal({ onClose, initialQty = 1, initialTotal =
             </div>
 
             <div className="buy-modal__nav">
-              <button type="button" className="btn-ghost buy-modal__back" onClick={onClose}>
+              <button type="button" className="btn-ghost buy-modal__back" onClick={handleClose}>
                 <ChevronLeftIcon /> Back
               </button>
               <span className="buy-modal__step">Step 1 / 2</span>

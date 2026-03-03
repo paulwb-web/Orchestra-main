@@ -1,19 +1,26 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 type ForgotPasswordModalProps = { onClose: () => void };
 
 export default function ForgotPasswordModal({ onClose }: ForgotPasswordModalProps) {
+  const [closing, setClosing] = useState(false);
+
+  function handleClose() {
+    setClosing(true);
+    setTimeout(onClose, 300);
+  }
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
   }, []);
 
   return (
-    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
+    <div className={`modal-overlay${closing ? " modal-overlay--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true">
       <div className="modal forgot-modal" onClick={(e) => e.stopPropagation()}>
-        <button type="button" className="modal__close" onClick={onClose} aria-label="Close">
+        <button type="button" className="modal__close" onClick={handleClose} aria-label="Close">
           ✕
         </button>
         <div className="forgot-modal__body">
@@ -24,7 +31,7 @@ export default function ForgotPasswordModal({ onClose }: ForgotPasswordModalProp
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              onClose();
+              handleClose();
             }}
             className="auth-modal__form"
           >

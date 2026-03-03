@@ -44,7 +44,7 @@ export default function AboutPage() {
           <h1 className="about__header-title">Orchestra</h1>
           <p className="about__header-subtitle">
             Art history meets AI — generate original images inspired by the movements
-            that shaped modern art, one prompt at a time.
+            that shaped modern art, one prompt at a time
           </p>
         </div>
 
@@ -71,13 +71,13 @@ export default function AboutPage() {
 
         <section className="about__cta">
           <h2 className="about__cta-title">
-            Create something that has never existed before.
+            Create something that has never existed before
           </h2>
           <div className="about__cta-content">
             <div className="about__cta-image-wrap">
               <Image
-                src="/images/art_styles/Symbolism02.jpg"
-                alt="Symbolism artwork example"
+                src="/images/art_styles/Fauvism02.jpg"
+                alt="Fauvism artwork example"
                 width={442}
                 height={360}
                 className="about__cta-image"
