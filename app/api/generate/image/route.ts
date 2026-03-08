@@ -5,11 +5,11 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
 const STYLE_SUFFIXES: Record<string, string> = {
-  Modernism:     "in a strict Bauhaus Modernist style, 1920s graphic design, minimalist geometric abstraction, heavy emphasis on primary colors (red, blue, yellow), grid-based composition, clean sans-serif aesthetic, flat industrial textures, influence of László Moholy-Nagy and Wassily Kandinsky",
-  Expressionism: "in the style of German Expressionism, 'Die Brücke' movement, jagged angular forms, aggressive heavy impasto brushwork, high-contrast 'woodcut' aesthetic, vibrating clashing colors, distorted psychological perspective, influence of Ernst Ludwig Kirchner and Edvard Munch",
-  Fauvism:       "in a bold Fauvist style, 'Les Fauves' aesthetic, wild arbitrary non-naturalistic colors, neon-saturated palettes, thick unblended paint strokes, raw canvas textures, rejection of three-dimensional depth, influence of Henri Matisse and André Derain",
-  Surrealism:    "in a Surrealist oil painting style, dream-logic, uncanny hyper-realistic textures, impossible juxtapositions, melting architectural forms, vast cinematic horizons, sharp focus, subconscious imagery, influence of Salvador Dalí and René Magritte",
-  Symbolism:     "in a late 19th-century Symbolist style, mystical and allegorical, hazy ethereal atmosphere, decadent ornate detailing, muted jewel tones, shimmering gold leaf accents, somber melancholy mood, influence of Gustave Moreau and Odilon Redon",
+  Modernism:     "Bauhaus style, flat 2D geometric shapes, primary colors red blue yellow, minimalist grid, Kandinsky",
+  Expressionism: "German Expressionism, distorted jagged lines, heavy black shadows, moody dark oil painting, Edvard Munch",
+  Fauvism:       "Fauvism, impressionism style, wild unnatural bright colors, neon palette, loose messy brushstrokes, Henri Matisse",
+  Surrealism:    "Surrealism, dream-like scene, melting objects, impossible physics, hyper-realistic detail, Salvador Dali",
+  Symbolism:     "Symbolism style, mystical atmosphere, hazy soft focus, gold leaf accents, dark ethereal mood, Gustave Moreau",
 };
 
 export async function POST(req: NextRequest) {
