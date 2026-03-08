@@ -18,7 +18,7 @@ const features = [
     title: "Unleash your creativity",
     description:
       "Simple by design. Describe what you want, choose your movement, and download a high-resolution original. No art school required.",
-    image: "/images/landing3.png",
+    image: "/images/landing4.png",
   },
 ];
 
