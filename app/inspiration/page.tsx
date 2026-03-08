@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import InspirationCard from "@/components/InspirationCard";
 import { prisma } from "@/lib/prisma";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function InspirationPage() {
   const generations = await prisma.generation.findMany({
