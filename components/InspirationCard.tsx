@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 function EyeIcon() {
   return (
@@ -24,15 +25,14 @@ function EyeOffIcon() {
 }
 
 type InspirationCardProps = {
-  id: string;
+  imageUrl: string;
+  style: string;
   prompt: string;
 };
 
-export default function InspirationCard({ id, prompt }: InspirationCardProps) {
+export default function InspirationCard({ imageUrl, style, prompt }: InspirationCardProps) {
   const [showPrompt, setShowPrompt] = useState(false);
   const [promptClosing, setPromptClosing] = useState(false);
-
-  const promptText = prompt.replace(/^Prompt:\s*/, "");
 
   function openPrompt() {
     setShowPrompt(true);
@@ -50,11 +50,20 @@ export default function InspirationCard({ id, prompt }: InspirationCardProps) {
   return (
     <div className="inspiration__card">
       <div className={`inspiration__card-image${showPrompt ? " inspiration__card-image--open" : ""}${promptClosing ? " inspiration__card-image--closing" : ""}`}>
+        <Image
+          src={imageUrl}
+          alt={prompt}
+          fill
+          style={{ objectFit: "cover" }}
+          unoptimized
+        />
         {showPrompt && (
-          <p className={`inspiration__card-prompt${promptClosing ? " inspiration__card-prompt--closing" : ""}`}>
-            <span className="inspiration__card-prompt-label">Prompt:</span>{" "}
-            {promptText}
-          </p>
+          <div className={`inspiration__card-overlay${promptClosing ? " inspiration__card-prompt--closing" : ""}`}>
+            <p className="inspiration__card-prompt">
+              <span className="inspiration__card-prompt-label">Prompt:</span>{" "}
+              {prompt}
+            </p>
+          </div>
         )}
       </div>
       <div className="inspiration__card-meta">
@@ -66,7 +75,7 @@ export default function InspirationCard({ id, prompt }: InspirationCardProps) {
           {showPrompt ? <EyeOffIcon /> : <EyeIcon />}
           {showPrompt ? "Close prompt" : "See prompt"}
         </button>
-        <span className="inspiration__card-id">{id}</span>
+        <span className="inspiration__card-id">{style}</span>
       </div>
     </div>
   );

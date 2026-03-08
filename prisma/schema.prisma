@@ -58,6 +58,7 @@ model Generation {
   imageUrl  String
   style     String
   prompt    String
+  approved  Boolean  @default(false)
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

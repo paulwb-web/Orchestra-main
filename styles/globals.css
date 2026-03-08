@@ -1002,25 +1002,37 @@ a:hover { text-decoration: none; }
   height: 400px;
   background: var(--color-grey-300);
   border-radius: 8px;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
+  position: relative;
 }
 .inspiration__card-image--open {
-  background: var(--color-surface);
   animation: prompt-fade-in 0.3s ease;
 }
 .inspiration__card-image--closing {
   animation: prompt-fade-out 0.3s ease forwards;
 }
+.inspiration__card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: prompt-fade-in 0.3s ease;
+}
+.inspiration__empty {
+  color: var(--color-text-muted);
+  font-size: var(--text-body);
+}
 .inspiration__card-prompt {
   font-size: var(--text-body);
   font-weight: 500;
   font-style: italic;
-  color: var(--color-black);
+  color: #fff;
   line-height: 1.6;
   margin: 0;
+  text-align: center;
   text-align: center;
   animation: prompt-fade-in 0.3s ease;
 }
@@ -1639,4 +1651,96 @@ a:hover { text-decoration: none; }
 .faq__title,
 .art-styles__title {
   letter-spacing: -0.03em;
+}
+
+/* ============================================================
+   Admin Page
+   ============================================================ */
+.admin {
+  min-height: 100vh;
+  background: var(--color-white);
+  padding: 48px var(--side-pad);
+}
+.admin__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.admin__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+.admin__title {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 400;
+  color: var(--color-black);
+  letter-spacing: -0.03em;
+  margin-bottom: 0;
+}
+.admin__section {
+  margin-bottom: 64px;
+}
+.admin__section-title {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: 24px;
+}
+.admin__empty {
+  color: var(--color-text-muted);
+  font-size: var(--text-body);
+}
+.admin__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+.admin__card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.admin__card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-grey-300);
+}
+.admin__card-meta {
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.admin__card-prompt {
+  font-size: var(--text-small);
+  color: var(--color-black);
+  margin: 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.admin__card-actions {
+  display: flex;
+  gap: 8px;
+}
+.admin__btn-accept {
+  color: #16a34a;
+}
+.admin__btn-accept:hover {
+  background: #f0fdf4;
+}
+.admin__btn-decline {
+  color: #dc2626;
+}
+.admin__btn-decline:hover {
+  background: #fef2f2;
 }
