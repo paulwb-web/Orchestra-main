@@ -6,19 +6,19 @@ const features = [
     title: "Welcome to Orchestra",
     description:
       "Generate original AI artwork inspired by history's most influential art movements — Modernism, Expressionism, Fauvism, Surrealism, and Symbolism — in seconds.",
-    image: "/images/image001.png",
+    image: "/images/landing1.png",
   },
   {
     title: "Our Mission",
     description:
       "We believe everyone deserves access to great art. Orchestra puts the power of art history in your hands — through AI precision-tuned to each movement's defining style.",
-    image: "/images/image002.png",
+    image: "/images/landing2.png",
   },
   {
     title: "Unleash your creativity",
     description:
       "Simple by design. Describe what you want, choose your movement, and download a high-resolution original. No art school required.",
-    image: "/images/image003.png",
+    image: "/images/landing3.png",
   },
 ];
 
