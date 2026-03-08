@@ -40,7 +40,7 @@ export default function PricingSlider({ onSelect }: Props) {
           <span className="pricing-slider__price">€{total}</span>
           <ApertureIcon />
           <span className="pricing-slider__pictures">
-            {qty} Picture{qty !== 1 ? "s" : ""}
+            {qty * 2} Picture{qty * 2 !== 1 ? "s" : ""}
           </span>
         </div>
         {/* Figma 82:4209: big token quantity display */}

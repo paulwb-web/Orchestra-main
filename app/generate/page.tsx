@@ -115,7 +115,7 @@ export default function GeneratePage() {
         return;
       }
 
-      setImages((prev) => [data.imageUrl, ...prev]);
+      setImages((prev) => [...(data.imageUrls ?? [data.imageUrl].filter(Boolean)), ...prev]);
       setTokenBalance(data.remainingTokens);
       window.dispatchEvent(new CustomEvent("tokenSpent", { detail: { balance: data.remainingTokens } }));
     } catch {

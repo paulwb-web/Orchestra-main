@@ -50,13 +50,13 @@ export async function POST(req: NextRequest) {
         prompt: fullPrompt,
         image_size: resolvedSize as "landscape_4_3" | "portrait_4_3" | "square_hd",
         num_inference_steps: 4,
-        num_images: 1,
+        num_images: 2,
         enable_safety_checker: true,
       },
     });
 
-    const imageUrl = (result.data as { images: { url: string }[] }).images[0]?.url;
-    if (!imageUrl) {
+    const imageUrls = (result.data as { images: { url: string }[] }).images.map((img) => img.url).filter(Boolean);
+    if (imageUrls.length === 0) {
       return NextResponse.json({ error: "No image returned" }, { status: 500 });
     }
 
@@ -66,12 +66,14 @@ export async function POST(req: NextRequest) {
         data: { tokenBalance: { decrement: 1 } },
         select: { tokenBalance: true },
       }),
-      prisma.generation.create({
-        data: { userId: user.id, imageUrl, style: style ?? "", prompt: prompt.trim() },
-      }),
+      ...imageUrls.map((imageUrl) =>
+        prisma.generation.create({
+          data: { userId: user.id, imageUrl, style: style ?? "", prompt: prompt.trim() },
+        })
+      ),
     ]);
 
-    return NextResponse.json({ imageUrl, remainingTokens: updated.tokenBalance });
+    return NextResponse.json({ imageUrls, remainingTokens: updated.tokenBalance });
   } catch (err) {
     console.error("[generate/image]", err);
     return NextResponse.json({ error: "Generation failed" }, { status: 500 });
