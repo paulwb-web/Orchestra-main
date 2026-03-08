@@ -11,7 +11,7 @@ const features = [
   {
     title: "Our Mission",
     description:
-      "We believe everyone deserves access to great art. Orchestra puts the power of art history in your hands — through AI precision-tuned to each movement's defining style.",
+      "Everyone deserves access to great art. Orchestra puts the power of art history in your hands — AI precision-tuned to each movement's defining style.",
     image: "/images/landing2.png",
   },
   {
