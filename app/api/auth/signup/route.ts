@@ -26,6 +26,7 @@ export async function POST(req: Request) {
         passwordHash,
         username: username || null,
         name: fullName || null,
+        tokenBalance: 3,
       },
     });
     return NextResponse.json({ ok: true });

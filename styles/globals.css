@@ -1213,7 +1213,8 @@ a:hover { text-decoration: none; }
   min-width: 0;
   min-height: 1000px;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 40px;
 }
 .generate__right::before {
@@ -1248,12 +1249,33 @@ a:hover { text-decoration: none; }
   gap: 24px;
   align-items: flex-start;
 }
+.generate__image-wrap {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+  border-radius: 8px;
+}
 .generate__image {
   display: block;
-  height: 400px;
+  height: 320px;
   width: auto;
   max-width: 100%;
 }
+.generate__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 16px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.generate__image-wrap:hover .generate__image-overlay {
+  opacity: 1;
+}
+
 .generate__grid-placeholder {
   height: 400px;
   width: 300px;

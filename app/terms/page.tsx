@@ -36,7 +36,7 @@ export default function TermsPage() {
           <section className="terms__section">
             <h2>Account Registration and Responsibilities</h2>
             <p>
-              In order to use certain features of the Site, you must create an account and provide accurate, current, and complete information as prompted by the registration process. You are solely responsible for maintaining the confidentiality of your account login details and for any and all activities that occur under your account. You agree to immediately notify us of any unauthorized use of your account or other security breaches via our email &ndash; support@PLACEHOLDER.
+              In order to use certain features of the Site, you must create an account and provide accurate, current, and complete information as prompted by the registration process. You are solely responsible for maintaining the confidentiality of your account login details and for any and all activities that occur under your account. You agree to immediately notify us of any unauthorized use of your account or other security breaches via our email &ndash; support@orchestra-art.com.
             </p>
             <p>By registering for an account, you agree to:</p>
             <ul>
@@ -99,7 +99,7 @@ export default function TermsPage() {
               <li>A technical issue has prevented you from accessing or downloading the image.</li>
             </ul>
             <p>
-              Refund requests must be submitted within 14 days of the purchase date and will be reviewed on a case-by-case basis. You may request the refund via our email &ndash; support@PLACEHOLDER.
+              Refund requests must be submitted within 14 days of the purchase date and will be reviewed on a case-by-case basis. You may request the refund via our email &ndash; support@orchestra-art.com.
             </p>
           </section>
 
@@ -158,7 +158,7 @@ export default function TermsPage() {
             <p>
               You agree to waive any right to participate in class-action lawsuits or other collective claims. The arbitration shall be conducted in accordance with the rules of the Vilnius Court of Commercial Arbitration, and the arbitration award shall be final and binding on all parties.
             </p>
-            <p>For any questions or concerns about these Terms, or to request support, please contact us at: support@PLACEHOLDER</p>
+            <p>For any questions or concerns about these Terms, or to request support, please contact us at: support@orchestra-art.com</p>
           </section>
         </div>
       </main>

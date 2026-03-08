@@ -93,7 +93,7 @@ const faqs = [
       {
         q: "How can I delete my account?",
         a: [
-          "If you wish to delete your account, you can delete your profile through your personal account or contact us at support@PLACEHOLDER.",
+          "If you wish to delete your account, you can delete your profile through your personal account or contact us at support@orchestra-art.com.",
           "Deleting your account is permanent, and you will lose access to all purchased content and personal settings.",
         ],
       },
@@ -118,7 +118,7 @@ const faqs = [
       {
         q: "How can I contact customer support?",
         a: [
-          "You can reach us via email at support@PLACEHOLDER or through our support form.",
+          "You can reach us via email at support@orchestra-art.com or through our support form.",
           "Our customer support team will assist you with any questions or issues.",
           "We aim to respond to all inquiries within 24 hours.",
         ],

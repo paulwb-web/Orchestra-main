@@ -65,6 +65,15 @@ export default function GeneratePage() {
       .then((r) => r.json())
       .then((d) => setTokenBalance(d.balance ?? null))
       .catch(() => setTokenBalance(null));
+
+    fetch("/api/user/generations")
+      .then((r) => r.json())
+      .then((d) => {
+        if (Array.isArray(d.generations)) {
+          setImages(d.generations.map((g: { imageUrl: string }) => g.imageUrl));
+        }
+      })
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -108,6 +117,7 @@ export default function GeneratePage() {
 
       setImages((prev) => [data.imageUrl, ...prev]);
       setTokenBalance(data.remainingTokens);
+      window.dispatchEvent(new CustomEvent("tokenSpent", { detail: { balance: data.remainingTokens } }));
     } catch {
       setError("Network error. Please try again.");
     } finally {
@@ -197,12 +207,6 @@ export default function GeneratePage() {
             </div>
           </div>
 
-          {tokenBalance !== null && (
-            <p className="generate__tokens">
-              {tokenBalance} token{tokenBalance !== 1 ? "s" : ""} remaining
-            </p>
-          )}
-
           {error && <p className="generate__error">{error}</p>}
         </div>
 
@@ -220,15 +224,32 @@ export default function GeneratePage() {
                 </div>
               )}
               {images.map((url, i) => (
-                <Image
-                  key={url}
-                  src={url}
-                  alt={`Generated ${selectedStyle} artwork ${i + 1}`}
-                  width={1024}
-                  height={1024}
-                  className="generate__image"
-                  unoptimized
-                />
+                <div key={url} className="generate__image-wrap">
+                  <Image
+                    src={url}
+                    alt={`Generated ${selectedStyle} artwork ${i + 1}`}
+                    width={1024}
+                    height={1024}
+                    className="generate__image"
+                    unoptimized
+                  />
+                  <div className="generate__image-overlay">
+                    <button
+                      type="button"
+                      className="btn-primary"
+                      onClick={async () => {
+                        const blob = await fetch(url).then((r) => r.blob());
+                        const a = document.createElement("a");
+                        a.href = URL.createObjectURL(blob);
+                        a.download = `orchestra-${selectedStyle.toLowerCase()}-${i + 1}.jpg`;
+                        a.click();
+                        URL.revokeObjectURL(a.href);
+                      }}
+                    >
+                      Download
+                    </button>
+                  </div>
+                </div>
               ))}
             </div>
           )}

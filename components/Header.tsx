@@ -58,6 +58,15 @@ export default function Header() {
     }
   }, []);
 
+  useEffect(() => {
+    function onTokenSpent(e: Event) {
+      const balance = (e as CustomEvent<{ balance: number }>).detail.balance;
+      setBalance(balance);
+    }
+    window.addEventListener("tokenSpent", onTokenSpent);
+    return () => window.removeEventListener("tokenSpent", onTokenSpent);
+  }, []);
+
   const nav = (
     <nav className="header__nav">
       <Link href="/generate" className="btn-ghost">Create</Link>

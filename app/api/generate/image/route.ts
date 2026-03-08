@@ -5,11 +5,11 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
 const STYLE_SUFFIXES: Record<string, string> = {
-  Modernism:     "painted in a Modernist style, geometric abstraction, bold flat composition, Bauhaus influence",
-  Expressionism: "in the style of German Expressionism, distorted forms, emotional intensity, vivid raw brushwork",
-  Fauvism:       "in a Fauvist style, wild loose brushstrokes, non-naturalistic pure vivid colors, Matisse influence",
-  Surrealism:    "in a Surrealist style, dreamlike uncanny scene, fantastical impossible imagery, Salvador Dali influence",
-  Symbolism:     "in a Symbolist style, mystical allegorical mood, ethereal atmosphere, rich ornate detail",
+  Modernism:     "in a strict Bauhaus Modernist style, 1920s graphic design, minimalist geometric abstraction, heavy emphasis on primary colors (red, blue, yellow), grid-based composition, clean sans-serif aesthetic, flat industrial textures, influence of László Moholy-Nagy and Wassily Kandinsky",
+  Expressionism: "in the style of German Expressionism, 'Die Brücke' movement, jagged angular forms, aggressive heavy impasto brushwork, high-contrast 'woodcut' aesthetic, vibrating clashing colors, distorted psychological perspective, influence of Ernst Ludwig Kirchner and Edvard Munch",
+  Fauvism:       "in a bold Fauvist style, 'Les Fauves' aesthetic, wild arbitrary non-naturalistic colors, neon-saturated palettes, thick unblended paint strokes, raw canvas textures, rejection of three-dimensional depth, influence of Henri Matisse and André Derain",
+  Surrealism:    "in a Surrealist oil painting style, dream-logic, uncanny hyper-realistic textures, impossible juxtapositions, melting architectural forms, vast cinematic horizons, sharp focus, subconscious imagery, influence of Salvador Dalí and René Magritte",
+  Symbolism:     "in a late 19th-century Symbolist style, mystical and allegorical, hazy ethereal atmosphere, decadent ornate detailing, muted jewel tones, shimmering gold leaf accents, somber melancholy mood, influence of Gustave Moreau and Odilon Redon",
 };
 
 export async function POST(req: NextRequest) {
@@ -60,11 +60,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No image returned" }, { status: 500 });
     }
 
-    const updated = await prisma.user.update({
-      where: { id: user.id },
-      data: { tokenBalance: { decrement: 1 } },
-      select: { tokenBalance: true },
-    });
+    const [updated] = await prisma.$transaction([
+      prisma.user.update({
+        where: { id: user.id },
+        data: { tokenBalance: { decrement: 1 } },
+        select: { tokenBalance: true },
+      }),
+      prisma.generation.create({
+        data: { userId: user.id, imageUrl, style: style ?? "", prompt: prompt.trim() },
+      }),
+    ]);
 
     return NextResponse.json({ imageUrl, remainingTokens: updated.tokenBalance });
   } catch (err) {

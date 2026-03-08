@@ -30,7 +30,7 @@ export default function Footer() {
         {/* Col 4: Support */}
         <div className="footer__section">
           <span className="footer__section-title">Support</span>
-          <span className="footer__section-email">Support@Loremipsum.com</span>
+          <span className="footer__section-email">support@orchestra-art.com</span>
           <span className="footer__copyright">Copyright © 2026. All rights reserved.</span>
         </div>
       </div>

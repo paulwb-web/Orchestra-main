@@ -25,7 +25,7 @@ export default function PrivacyPage() {
               PLACEHOLDER<br />
               PLACEHOLDER<br />
               PLACEHOLDER<br />
-              support@PLACEHOLDER<br />
+              support@orchestra-art.com<br />
               PLACEHOLDER
             </p>
             <p>As the data controller, we determine the purposes and means of processing your personal data.</p>
@@ -177,7 +177,7 @@ export default function PrivacyPage() {
             <p>
               PLACEHOLDER<br />
               PLACEHOLDER<br />
-              support@PLACEHOLDER
+              support@orchestra-art.com
             </p>
           </section>
         </div>
