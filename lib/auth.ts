@@ -19,10 +19,8 @@ export const authOptions: NextAuthOptions = {
             where: { email: credentials.email },
             select: { id: true, email: true, name: true, passwordHash: true },
           });
-          console.log("[auth] user found:", !!user, "email:", credentials.email);
           if (!user) return null;
           const valid = await compare(credentials.password, user.passwordHash);
-          console.log("[auth] password valid:", valid);
           if (!valid) return null;
           return { id: user.id, email: user.email, name: user.name };
         } catch (err) {
