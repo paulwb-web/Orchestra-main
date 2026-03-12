@@ -105,7 +105,7 @@ export default function Header() {
   const nav = (
     <nav className="header__nav">
       <Link href="/generate" className="btn-ghost" onClick={closeMenu}>Create</Link>
-      <Link href="/marketplace" className="btn-ghost" onClick={closeMenu}>Marketplace</Link>
+      <Link href="/marketplace" className="btn-ghost" onClick={closeMenu}>Market</Link>
       <Link href="/about" className="btn-ghost" onClick={closeMenu}>About</Link>
     </nav>
   );

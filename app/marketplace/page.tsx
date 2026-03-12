@@ -17,7 +17,7 @@ export default async function MarketplacePage() {
       <Header />
       <main className="marketplace site-wrapper">
         <div className="marketplace__header">
-          <h1 className="marketplace__title">Marketplace</h1>
+          <h1 className="marketplace__title">Market</h1>
           <p className="marketplace__subtitle">Own a piece of art inspired by the great movements of modern art</p>
         </div>
         <div className="marketplace__grid">
