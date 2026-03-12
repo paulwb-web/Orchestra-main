@@ -23,6 +23,14 @@ function getStarRating(id: string): number {
   return steps[hashId(id) % steps.length];
 }
 
+// €5.25–€15.00 in €0.25 steps (40 values), seeded by id
+function getPrice(id: string): string {
+  const steps = 40; // (15.00 - 5.25) / 0.25 + 1
+  const index = (hashId(id) >> 3) % steps; // shift bits to get independent variation from star rating
+  const price = 5.25 + index * 0.25;
+  return price.toFixed(2).replace(".", ",");
+}
+
 function FullStar() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="#111827" xmlns="http://www.w3.org/2000/svg" aria-hidden>
@@ -69,6 +77,7 @@ function Stars({ rating, uid }: { rating: number; uid: string }) {
 export default function MarketplaceCard({ generationId, imageUrl, prompt, style }: MarketplaceCardProps) {
   const [toast, setToast] = useState(false);
   const rating = getStarRating(generationId);
+  const price = getPrice(generationId);
 
   function handleAddToCart() {
     if (toast) return;
@@ -93,7 +102,7 @@ export default function MarketplaceCard({ generationId, imageUrl, prompt, style 
         <p className="marketplace-card__title" title={prompt}>{prompt}</p>
         <div className="marketplace-card__meta">
           <Stars rating={rating} uid={generationId} />
-          <span className="marketplace-card__price">€10</span>
+          <span className="marketplace-card__price">€{price}</span>
         </div>
         <button
           type="button"

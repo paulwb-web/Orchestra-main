@@ -18,7 +18,7 @@ export default function Hero() {
           <p className="hero__subtitle">Generate art inspired by the great movements of modern art history</p>
           <p className="hero__description">
             Orchestra lets you generate original artwork in the style of Modernism, Expressionism,
-            Surrealism, and more. Pick a movement, describe your vision, get your image.
+            Surrealism, and more. Pick a movement, describe your vision, get your image
           </p>
           <Link href="/generate" className="btn-primary">
             Start creating <ArrowRight />

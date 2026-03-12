@@ -1879,7 +1879,7 @@ a:hover { text-decoration: none; }
   line-height: 1.4;
 }
 
-/* Responsive */
+/* Marketplace responsive (existing) */
 @media (max-width: 900px) {
   .marketplace__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1892,4 +1892,232 @@ a:hover { text-decoration: none; }
   .marketplace__title {
     font-size: 56px;
   }
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile Overhaul
+   Breakpoints: 768px (tablet/mobile), 480px (small phone)
+   ============================================================ */
+
+/* --- A. Root: scale typography + spacing tokens --- */
+@media (max-width: 768px) {
+  :root {
+    --text-hero:    48px;
+    --text-section: 28px;
+    --text-h3:      18px;
+    --side-pad:     16px;
+  }
+}
+@media (max-width: 480px) {
+  :root {
+    --text-hero:    36px;
+    --text-section: 24px;
+  }
+}
+
+/* --- B. Header: hamburger, hide desktop nav/actions --- */
+.header__hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+}
+.header__hamburger:focus-visible {
+  outline: 2px solid var(--color-grey-300);
+}
+.header__mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header__inner {
+    height: 72px;
+  }
+  .header__nav {
+    display: none;
+  }
+  .header__actions {
+    display: none;
+  }
+  .header__hamburger {
+    display: flex;
+  }
+  /* Mobile drawer */
+  .header--menu-open .header__mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-white);
+    padding: 16px var(--side-pad);
+    gap: 0;
+    z-index: 99;
+    overflow-y: auto;
+  }
+  /* Reset absolute positioning from desktop nav */
+  .header--menu-open .header__mobile-menu .header__nav {
+    position: static;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  /* Uniform row style for all menu items */
+  .header--menu-open .header__mobile-menu .btn-ghost,
+  .header__counter--mobile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    font-size: var(--text-ui);
+    font-weight: 500;
+    padding: 14px 8px;
+    border-radius: var(--radius-md);
+    text-align: left;
+    gap: 10px;
+  }
+  .header__mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-grey-300);
+  }
+  .header__counter--mobile {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    border-radius: var(--radius-md);
+  }
+  .header__counter--mobile:hover {
+    background: rgba(17,24,39,0.06);
+  }
+}
+
+/* --- C. Hero --- */
+@media (max-width: 768px) {
+  .hero { padding: 32px var(--side-pad); }
+  .hero__inner { gap: 24px; }
+  .hero__title { line-height: 1.1; }
+  .hero__subtitle-block { gap: 20px; }
+}
+
+/* --- D. Feature blocks --- */
+@media (max-width: 768px) {
+  .features { padding: 32px var(--side-pad); }
+  .features__grid { flex-direction: column; gap: 32px; }
+  .features__image-wrap { width: 100%; height: auto; aspect-ratio: 4 / 3; flex-shrink: 1; }
+  .features__image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .features__card { gap: 16px; }
+}
+
+/* --- E. Art Styles section --- */
+@media (max-width: 768px) {
+  .art-styles { padding: 40px var(--side-pad); }
+  .art-styles__content { flex-direction: column; gap: 32px; }
+  .art-styles__viewer { min-height: 260px; }
+  .art-styles__toggles { flex-wrap: wrap; }
+}
+
+/* --- F. Pricing section + slider --- */
+@media (max-width: 768px) {
+  .pricing__grid { flex-wrap: wrap; justify-content: center; }
+  .pricing__card { width: 100%; max-width: 320px; flex-shrink: 1; padding: 24px; }
+  .pricing-slider { width: 100%; padding: 24px; }
+  .pricing-slider__number { font-size: 36px; }
+  .pricing-slider__unit { font-size: 36px; }
+}
+
+/* --- G. CTA block --- */
+@media (max-width: 768px) {
+  .cta-block { flex-direction: column; gap: 24px; align-items: center; }
+  .cta-block__image { width: 100%; max-width: 100%; }
+  .cta-block__text { max-width: 100%; text-align: center; align-items: center; }
+}
+
+/* --- H. Footer --- */
+@media (max-width: 768px) {
+  .footer { height: auto; padding: 40px var(--side-pad) 0; }
+  .footer__content { flex-direction: column; gap: 32px; margin-bottom: 40px; }
+  .footer__section { width: 100%; flex-shrink: 1; }
+  .footer__wordmark-wrap { height: 80px; overflow: hidden; }
+  .footer__wordmark-text { font-size: 120px; }
+}
+
+/* --- I. Generate page --- */
+@media (max-width: 768px) {
+  .generate__main {
+    flex-direction: column;
+    padding: 24px var(--side-pad) 40px;
+    gap: 24px;
+  }
+  .generate__left {
+    width: 100%;
+    flex-shrink: 1;
+  }
+  .generate__right {
+    padding: 0;
+    min-height: unset;
+    border-left: none;
+  }
+  .generate__image {
+    height: auto;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+  }
+}
+
+/* --- J. Inspiration gallery --- */
+@media (max-width: 900px) {
+  .inspiration__gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .inspiration__card {
+    width: 100%;
+  }
+  .inspiration__card-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+@media (max-width: 560px) {
+  .inspiration__gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- K. About page --- */
+@media (max-width: 768px) {
+  .about__header { margin-bottom: 32px; }
+  .about__cta-image { height: auto; aspect-ratio: 16 / 9; width: 100%; }
+  .about__cta { gap: 24px; }
+}
+
+/* --- L. Modals --- */
+@media (max-width: 640px) {
+  .modal { padding: 24px; width: calc(100vw - 32px); border-radius: var(--radius-lg); }
+  .modal-overlay { padding: 16px; }
+  .auth-modal__tabs { gap: 12px; }
+  .buy-modal__pack { padding: 24px; }
+  .buy-modal__payment-placeholder { height: auto; min-height: 200px; }
+}
+
+/* --- M. Marketplace — fix line-height at mobile --- */
+@media (max-width: 768px) {
+  .marketplace { padding: 32px var(--side-pad) 48px; }
+  .marketplace__title { line-height: 1.1; }
+  .marketplace__header { margin-bottom: 32px; }
 }

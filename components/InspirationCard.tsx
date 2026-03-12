@@ -49,7 +49,7 @@ export default function InspirationCard({ imageUrl, style, prompt }: Inspiration
 
   return (
     <div className="inspiration__card">
-      <div className={`inspiration__card-image${showPrompt ? " inspiration__card-image--open" : ""}${promptClosing ? " inspiration__card-image--closing" : ""}`}>
+      <div className="inspiration__card-image">
         <Image
           src={imageUrl}
           alt={prompt}

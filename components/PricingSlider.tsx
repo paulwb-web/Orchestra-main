@@ -28,7 +28,7 @@ function ApertureIcon() {
 type Props = { onSelect: (qty: number, total: number) => void };
 
 export default function PricingSlider({ onSelect }: Props) {
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState(10);
   const total = calcPrice(qty);
 
   return (
