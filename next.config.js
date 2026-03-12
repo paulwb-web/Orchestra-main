@@ -6,6 +6,11 @@ const nextConfig = {
       { protocol: "https", hostname: "storage.googleapis.com" },
     ],
   },
+  async redirects() {
+    return [
+      { source: "/inspiration", destination: "/marketplace", permanent: false },
+    ];
+  },
 };
 
 module.exports = nextConfig;

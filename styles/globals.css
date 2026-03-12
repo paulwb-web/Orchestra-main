@@ -65,6 +65,10 @@
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Non-selectable UI text — re-enable only for form inputs */
+body { user-select: none; }
+input, textarea, [contenteditable] { user-select: text; }
+
 html, body {
   font-family: var(--font-body);
   font-size: var(--text-body);
@@ -139,7 +143,7 @@ a:hover { text-decoration: none; }
   line-height: 24px;
   border: 1px solid #D1D5DB;
   border-radius: 100px;
-  box-shadow: 0 2px 12px 0 rgba(17, 24, 39, 0.04);
+  box-shadow: 0 2px 12px 0 rgba(17, 24, 39, 0.10);
   cursor: pointer;
   white-space: nowrap;
   text-decoration: none;
@@ -453,7 +457,7 @@ a:hover { text-decoration: none; }
 }
 .pricing__card:hover {
   transform: scale(1.02);
-  box-shadow: 0 8px 24px 0 rgba(17, 24, 39, 0.10);
+  box-shadow: 0 8px 24px 0 rgba(17, 24, 39, 0.20);
 }
 /* Pack name + price block: 8px gap (Figma 41-4295) */
 .pricing__details {
@@ -516,7 +520,7 @@ a:hover { text-decoration: none; }
 }
 .pricing-slider:hover {
   transform: scale(1.03);
-  box-shadow: 0 2px 12px 0 rgba(17, 24, 39, 0.04);
+  box-shadow: 0 2px 12px 0 rgba(17, 24, 39, 0.10);
 }
 .modal .pricing-slider:hover {
   transform: none;
@@ -969,7 +973,7 @@ a:hover { text-decoration: none; }
 .inspiration { padding: 40px var(--side-pad); }
 .inspiration__header {
   max-width: 800px;
-  margin: 0 auto 40px;
+  margin: 0 auto 48px;
   text-align: center;
 }
 .inspiration__header-title {
@@ -983,6 +987,8 @@ a:hover { text-decoration: none; }
 .inspiration__header-subtitle {
   font-size: var(--text-h3);
   font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.144px;
   color: var(--color-black);
 }
 .inspiration__gallery {
@@ -1005,12 +1011,8 @@ a:hover { text-decoration: none; }
   overflow: hidden;
   position: relative;
 }
-.inspiration__card-image--open {
-  animation: prompt-fade-in 0.3s ease;
-}
-.inspiration__card-image--closing {
-  animation: prompt-fade-out 0.3s ease forwards;
-}
+.inspiration__card-image--open {}
+.inspiration__card-image--closing {}
 .inspiration__card-overlay {
   position: absolute;
   inset: 0;
@@ -1315,7 +1317,7 @@ a:hover { text-decoration: none; }
 
 .about__header {
   max-width: 800px;
-  margin: 0 auto 64px;
+  margin: 0 auto 48px;
   text-align: center;
 }
 .about__header-title {
@@ -1329,6 +1331,8 @@ a:hover { text-decoration: none; }
 .about__header-subtitle {
   font-size: var(--text-h3);
   font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.144px;
   color: var(--color-black);
 }
 
@@ -1743,4 +1747,149 @@ a:hover { text-decoration: none; }
 }
 .admin__btn-decline:hover {
   background: #fef2f2;
+}
+
+/* ============================================================
+   Marketplace Page
+   ============================================================ */
+.marketplace {
+  padding: 40px var(--side-pad) 80px;
+}
+.marketplace__header {
+  max-width: 800px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+.marketplace__title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 400;
+  line-height: 122.4px;
+  letter-spacing: -0.9px;
+  color: var(--color-black);
+  margin-bottom: 40px;
+}
+.marketplace__subtitle {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.144px;
+  color: var(--color-black);
+}
+.marketplace__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.marketplace__empty {
+  color: var(--color-text-muted);
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+/* Card */
+.marketplace-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: none;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.marketplace-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 2px 12px 0 rgba(17, 24, 39, 0.10);
+}
+.marketplace-card__image-wrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--color-grey-100);
+}
+.marketplace-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Watermark: tiled diagonal "Orchestra" text */
+.marketplace-card__watermark {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%2290%22%3E%3Ctext x=%2210%22 y=%2255%22 transform=%22rotate(-25 90 45)%22 font-family=%22sans-serif%22 font-size=%2213%22 font-weight=%22500%22 letter-spacing=%223%22 fill=%22white%22 fill-opacity=%220.28%22%3EOrchestra%3C/text%3E%3C/svg%3E");
+  background-size: 180px 90px;
+  background-repeat: repeat;
+}
+.marketplace-card__body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.marketplace-card__title {
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+.marketplace-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.marketplace-card__stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.marketplace-card__price {
+  font-size: var(--text-body);
+  font-weight: 700;
+  color: var(--color-text);
+}
+.marketplace-card__btn {
+  width: 100%;
+  padding: 10px 0;
+  border: 1px solid var(--color-grey-300);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  background: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.marketplace-card__btn:hover {
+  background: var(--color-grey-100);
+  border-color: #9ca3af;
+}
+.marketplace-card__toast {
+  font-size: var(--text-detail);
+  color: var(--color-text-muted);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .marketplace__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .marketplace__grid {
+    grid-template-columns: 1fr;
+  }
+  .marketplace__title {
+    font-size: 56px;
+  }
 }
