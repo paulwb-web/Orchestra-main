@@ -952,8 +952,9 @@ a:hover { text-decoration: none; }
   border-radius: 24px;
   padding: 40px;
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
 }
 .buy-modal__summary-icon { height: 56px; width: auto; object-fit: contain; }
 .buy-modal__summary-title { font-size: var(--text-lead); font-weight: 600; color: var(--color-black); }
