@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import PricingSlider from "./PricingSlider";
 
 function ChevronLeftIcon() {
@@ -87,6 +88,7 @@ export default function BuyTokensModal({ onClose, initialQty = 1, initialTotal =
             </div>
 
             <div className="buy-modal__summary">
+              <Image src="/icon-pay.png" alt="" width={56} height={56} className="buy-modal__summary-icon" unoptimized />
               <p className="buy-modal__summary-title">
                 €{total} · {qty} Token{qty !== 1 ? "s" : ""}
               </p>
